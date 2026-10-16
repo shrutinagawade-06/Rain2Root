@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b5947">
+  <meta name="description" content="Rain2Root: Smart rainwater harvesting and groundwater recharge planning.">
+  <title>Rain2Root | Smart Water Management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#home">🌱 Rain2Root</a>
+    <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#solution">Our Solution</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#monitor">Smart Monitor</a>
+      <a href="#budget">Budget</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">SMART WATER • SUSTAINABLE FUTURE</span>
+        <h1>Every Drop Counts.<br><span>Every Drop Returns.</span></h1>
+        <p>
+          Plan smarter rainwater harvesting, estimate water collection,
+          and explore solutions for groundwater recharge.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#calculator">Calculate My Water</a>
+          <a class="btn secondary" href="#solution">Explore Our Solution</a>
+        </div>
+        <p class="tagline">Water Today, Security Tomorrow.</p>
+      </div>
+      <div class="hero-visual" aria-label="Rain and water conservation">
+        <div class="water-icon">🌧️</div>
+        <div class="water-drop">💧</div>
+        <div class="earth-icon">🌍</div>
+        <p>Harvest · Filter · Recharge</p>
+      </div>
+    </section>
+
+    <section class="section" id="solution">
+      <div class="section-heading">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>From Rooftop to Groundwater</h2>
+        <p>A simple process for collecting rain and directing suitable water
+          toward storage or groundwater recharge.</p>
+      </div>
+
+      <div class="steps">
+        <article class="card">
+          <div class="step-icon">🌧️</div>
+          <h3>01. Collection</h3>
+          <p>Roof surfaces and gutters collect rainfall and guide it to a downpipe.</p>
+        </article>
+        <article class="card">
+          <div class="step-icon">🪨</div>
+          <h3>02. Filtration</h3>
+          <p>A suitable filter removes leaves and suspended particles before storage or recharge.</p>
+        </article>
+        <article class="card">
+          <div class="step-icon">💧</div>
+          <h3>03. Storage</h3>
+          <p>Collected water can be stored in a tank for appropriate non-drinking uses.</p>
+        </article>
+        <article class="card">
+          <div class="step-icon">🌱</div>
+          <h3>04. Recharge</h3>
+          <p>Suitable excess water can be directed to a properly designed recharge structure.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section tinted" id="calculator">
+      <div class="section-heading">
+        <span class="eyebrow">PLAN YOUR SYSTEM</span>
+        <h2>Rainwater Harvesting Calculator</h2>
+        <p>Estimate potential rainwater collection using your roof area and local rainfall.</p>
+      </div>
+
+      <div class="planner">
+        <form id="waterForm" class="panel">
+          <label for="location">Location or city</label>
+          ```html
+<!-- Location-Based Rainwater Recommendations -->
+<section id="location" class="section">
+  <div class="container">
+    <h2>Smart Location-Based Planning</h2>
+    <p>
+      Discover rainwater harvesting opportunities
+      based on your location.
+    </p>
+
+    <button id="locationBtn" class="btn">
+      Detect My Location
+    </button>
+
+    <p id="locationStatus" role="status">
+      Your location has not been detected yet.
+    </p>
+
+    <div id="locationResults" hidden>
+      <h3>Your Location Details</h3>
+      <p id="coordinates"></p>
+      <p id="placeName"></p>
+
+      <h3>Rainwater Harvesting Potential</h3>
+      <p id="rainfallInfo">
+        Rainfall information will appear here.
+      </p>
+      <label for="roofArea">Roof area (m²):</label>
+<input
+  id="roofArea"
+  type="number"
+  min="1"
+  value="100"
+  placeholder="Enter roof area"
+/>
+      <p id="harvestingAdvice"></p>
+    </div>
+  </div>
+</section>
+'''html
+          <input id="location" placeholder="e.g. Pune, Maharashtra"
+            autocomplete="address-level2">
+          <div class="weather-controls">
+            <button class="btn secondary" id="cityWeatherBtn" type="button">
+              Get city rainfall
+            </button>
+            <button class="btn secondary" id="geolocationBtn" type="button">
+              Use my location
+            </button>
+          </div>
+          <p class="weather-status" id="weatherStatus" role="status" aria-live="polite">
+            Weather lookup is not configured. Enter annual rainfall manually, or
+            enable the Open-Meteo lookup in script.js.
+          </p>
+
+          <label for="roof">Roof catchment area (m²)</label>
+          <input id="roof" type="number" min="1" max="1000000"
+            value="100" required>
+
+          <label for="rainfall">Annual rainfall (mm)</label>
+          <input id="rainfall" type="number" min="0" max="10000"
+            value="800" step="any" required>
+
+          <label for="efficiency">Collection efficiency (%)</label>
+          <input id="efficiency" type="number" min="1" max="100"
+            value="80" required>
+
+          <button class="btn primary full" type="submit">Calculate Potential</button>
+        </form>
+
+        <div class="panel result-panel" aria-live="polite">
+          <span class="eyebrow">ESTIMATED ANNUAL COLLECTION</span>
+          <div class="big-number" id="waterResult">64,000 L</div>
+          <p>Potential rainwater collected in a typical year.</p>
+          <div class="result-line">
+            <span>Average per month</span>
+            <strong id="monthlyResult">5,333 L</strong>
+          </div>
+          <div class="result-line">
+            <span>Daily annual average</span>
+            <strong id="dailyResult">175 L</strong>
+          </div>
+          <div class="result-line">
+            <span>Rainfall source</span>
+            <strong id="rainfallSource">Manual rainfall input</strong>
+          </div>
+          <div class="result-line">
+            <span>Rainfall period / date</span>
+            <strong id="rainfallDate">User-provided; no date</strong>
+          </div>
+          <p class="note" id="calcNote">
+            Estimate only. Actual collection varies with rainfall, roof material,
+            first-flush losses and system performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    
+<section class="section" id="monitor">
+  <div class="section-heading">
+    <span class="eyebrow">SMART IOT MONITORING</span>
+    <h2>Live Water System Dashboard</h2>
+    <p>Monitor the tank level using ESP32 readings or use demo mode while assembling your hardware.</p>
+  </div>
+
+  <div class="monitor-controls panel">
+    <label for="deviceUrl">ESP32 API address</label>
+    <input id="deviceUrl" type="url"
+      value="http://192.168.4.1"
+      placeholder="http://192.168.1.100">
+
+    <div class="mode-buttons">
+      <button class="btn secondary" id="demoBtn" type="button">
+        Demo Mode
+      </button>
+      <button class="btn primary" id="liveBtn" type="button">
+        Connect ESP32
+      </button>
+    </div>
+
+    <p id="connectionStatus" class="connection-status" role="status"
+      aria-live="polite">Demo mode is active.</p>
+    <p class="note">
+      For live mode, enter the ESP32's actual IP address.
+      Your laptop and ESP32 must be able to communicate over the network.
+    </p>
+  </div>
+
+  <div class="dashboard">
+    <article class="metric">
+      <span>💧 Tank Level</span>
+      <strong id="tankLevel">72%</strong>
+      <div class="meter">
+        <div id="tankBar" style="width:72%"></div>
+      </div>
+      <small id="readingSource">Demo reading</small>
+    </article>
+
+    <article class="metric">
+      <span>📏 Sensor Distance</span>
+      <strong id="distanceValue">-- cm</strong>
+      <small>Distance from sensor to water</small>
+    </article>
+
+    <article class="metric">
+      <span>📡 Device Connection</span>
+      <strong id="deviceState">Demo</strong>
+      <small id="lastUpdated">No live reading yet</small>
+    </article>
+
+    <article class="metric">
+      <span>🌱 Recharge Flow</span>
+      <strong id="rechargeState">Not measured</strong>
+      <small>Requires a flow sensor for live measurement</small>
+    </article>
+  </div>
+
+  <p class="note center">
+    Demo readings are simulated. Live values are shown only when data is
+    received from the ESP32. Tank level is not a measurement of groundwater recharge.
+  </p>
+</section>
+
+    <section class="section tinted" id="budget">
+      <div class="section-heading">
+        <span class="eyebrow">COST PLANNING</span>
+        <h2>Preliminary Budget Estimator</h2>
+        <p>Build an initial cost estimate for your proposed rainwater system.</p>
+      </div>
+
+      <div class="budget-box panel">
+        <label for="roofBudget">Roof area (m²)</label>
+        <input id="roofBudget" type="number" min="1" max="1000000" value="100">
+
+        <label for="costRate">Estimated installation cost per m² (₹)</label>
+        <input id="costRate" type="number" min="0" max="1000000" value="150">
+
+        <button class="btn primary full" id="budgetBtn" type="button">
+          Estimate Budget
+        </button>
+
+        <div class="budget-result">
+          <span>Preliminary estimated cost</span>
+          <strong id="budgetResult">₹15,000</strong>
+        </div>
+        <p class="note">
+          Illustrative calculation only. This rate is a placeholder, not a market quote.
+          Actual costs depend on tanks, filters, plumbing, excavation, sensors and site conditions.
+        </p>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <span class="eyebrow">BUILD A WATER-SECURE FUTURE</span>
+      <h2>Save Rain. Recharge Earth.</h2>
+      <p>Rain2Root connects water conservation awareness with practical system planning.</p>
+      <a class="btn primary" href="#calculator">Start Planning</a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#home">🌱 Rain2Root</a>
+    <p>CEP Project · Smart Rainwater Harvesting & Groundwater Recharge</p>
+    <p>© <span id="year"></span> Rain2Root</p>
+  </footer>
+</body>
+</html>
